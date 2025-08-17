@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="images/allstock1.jpg" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind.config.js"></script>
+  <title>Allstock PRDKBT</title>
+</head>
+
+<body class="bg-gray-400">
+  <!-- Navbar Section-->
+  <div class="flex flex-row items-center justify-between bg-black fixed top-0 left-0 right-0 z-50 h-16">
+    <div class="pl-10 cursor-pointer">
+      <a href="home.html">
+        <img src="images/allstock.png" alt="allstock-logo" class="w-24 h-14" /></a>
+    </div>
+
+    <div>
+      <ul class="flex flex-row space-x-12 text-lg font-light">
+        <li>
+          <a href="home.html" class="text-white no-underline hover:opacity-75">Home</a>
+        </li>
+        <li>
+          <a href="#" class="text-white no-underline hover:opacity-75">About Us</a>
+        </li>
+        <li>
+          <a href="#" class="text-white no-underline hover:opacity-75">How To Order</a>
+        </li>
+        <li>
+          <a href="#" class="text-white no-underline hover:opacity-75">Contact</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="flex flex-row space-x-12 pr-10">
+      <button id="userButton" class="p-2">
+        <img src="images/user.png" alt="User" class="w-6 h-6" />
+      </button>
+      <form action=""
+        class="relative flex items-center box-border rounded-full p-2 hover:w-60 cursor-pointer hover:bg-black hover:text-white transition-all duration-300 group">
+        <img src="images/search.png" alt="" class="w-6 h-6 cursor-pointer box-border z-10">
+        <input type="text" placeholder="Search"
+          class="absolute left-0 w-full h-full outline-0 border-0 opacity-0 group-hover:opacity-100 pl-12 pr-5 bg-transparent hover:border hover:border-white transition-all duration-300">
+      </form>
+      <button class="p-2">
+        <img src="images/cart.png" alt="Cart" class="w-6 h-6" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-80 relative mx-auto my-40">
+      <button id="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-black">✕</button>
+      <div class="w-full text-center mb-6">
+        <h1 class="font-bold text-3xl">Login</h1>
+      </div>
+      <form class="flex flex-col space-y-4">
+        <input type="text" placeholder="Username" class="w-full p-2 border border-gray-300 rounded" />
+        <input type="password" placeholder="Password" class="w-full p-2 border border-gray-300 rounded" />
+        <button id="loginButton" type="submit"
+          class="w-full bg-black text-white p-2 rounded hover:text-black hover:bg-white hover:border-2 hover:border-black transition-colors duration-500">Login</button>
+      </form>
+      <div class="text-center mt-4 flex flex-col space-y-2">
+        <p ">Don't have an account? <a href=" #" class="hover:text-blue-500 underline" id="regLink">Click
+          here.</a></p>
+        <a href="#" class="hover:text-blue-500">Forgot Password?</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Registration Form Modal -->
+  <div id="regModal" class="fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="w-80 h-auto bg-white relative mx-auto my-32 rounded-lg shadow-lg shadow-slate-900 space-y-6">
+      <button id="closeModal2" class="absolute top-2 right-2 text-gray-500 hover:text-black">✕</button>
+      <div class="w-full text-center pt-4">
+        <h1 class="font-bold text-2xl">Register Your Account</h1>
+        <div class="border-b-2 border-black w-full mt-2"></div>
+      </div>
+
+      <div class="flex items-center justify-center">
+        <div class="flex justify-center items-center w-full h-full">
+          <form id="regForm" action="" class="flex flex-col space-y-2">
+            <div class="flex flex-col space-y-2">
+              <label for="">Username</label>
+              <input type="text" placeholder="Enter Your Username"
+                class="placeholder:text-xs text-sm p-1 w-full border border-gray-800 rounded-md">
+            </div>
+            <div class=" flex flex-col space-y-2">
+              <label for="">First Name</label>
+              <input type="text" placeholder="Enter Your First Name"
+                class="placeholder:text-xs text-sm p-1 w-full border border-gray-800 rounded-md">
+            </div>
+            <div class=" flex flex-col space-y-2">
+              <label for="">Last Name</label>
+              <input type="text" placeholder="Enter Your Last Name"
+                class=" placeholder:text-xs text-sm p-1 w-full border border-gray-800 rounded-md">
+            </div>
+            <div class=" flex flex-col space-y-2">
+              <label for="">Email</label>
+              <input type="email" placeholder="Enter Your Email"
+                class="placeholder:text-xs text-sm p-1 w-full border border-gray-800 rounded-md">
+            </div>
+            <div class=" flex flex-col space-y-2">
+              <label for="">Password</label>
+              <div class="relative">
+                <input id="passwordInput" type="password" placeholder="Enter Your Password"
+                  class="placeholder:text-xs text-sm p-1 w-full border border-gray-800 rounded-md pr-6">
+                <button onclick="togglePassword()" type="button"
+                  class="absolute right-1 top-1/2 transform -translate-y-1/2">
+                  <svg id="eyeIcon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  </svg>
+                </button>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class=" flex items-center justify-center w-full pb-4 space-x-5">
+        <button id="cancelButton" type="submit"
+          class="w-32 bg-white text-black p-1 border border-black rounded hover:text-white hover:bg-black hover:border-2 hover:border-white transition-colors duration-500">Cancel</button>
+        <button id="regButton" type="submit"
+          class="w-32 bg-black text-white p-1 rounded hover:text-black hover:bg-white hover:border-2 hover:border-black transition-colors duration-500">Register</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!--Main Content-->
+  <div class="w-full h-screen relative pt-16">
+
+    <img src="images/3.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-50" />
+
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-y-4 w-full max-w-3xl px-4">
+      <h1 class="text-5xl font-normal animate-slideInRight">WELCOME TO</h1>
+      <h2 class="text-5xl font-bold font-pervitina animate-slideInLeft delay-200">
+        ALLSTOCK PRDKBT
+      </h2>
+      <p
+        class="text-gray-800 font-normal mt-4 animate-slideInRight delay-400 bg-gray-400 p-3 rounded-xl bg-opacity-60 flex items-center justify-center text-lg">
+        Your go-to destination for premium streetwear and urban fashion. We
+        blend quality, style, and comfort in every piece, offering fresh,
+        trendsetting designs for the modern wardrobe. Stay bold, stay stocked.
+      </p>
+      <button
+        class="mt-6 text-white bg-black rounded-xl p-3 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-white hover:text-black">
+        Start shopping
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="bg-black w-full h-24 flex flex-col justify-center items-center text-white space-y-4">
+    <div>
+      <p class="text-sm text-white">
+        © 2023 Allstock PRDKBT. All rights reserved.
+      </p>
+    </div>
+    <div class="flex flex-row space-x-4">
+      <a href="https://www.facebook.com/profile.php?id=61569178565098" target="_blank" class="hover:opacity-75"><img
+          src="images/facebook.png" alt="" class="w-4 h-4" /></a>
+      <a href="" target="_blank" class="hover:opacity-75"><img src="images/tiktok.png" alt="" class="w-4 h-4" /></a>
+      <a href="" target="_blank" class="hover:opacity-75"><img src="images/instagram.png" alt="" class="w-4 h-4" /></a>
+    </div>
+  </div>
+
+  <script>
+    // Get the modal and buttons
+    const loginModal = document.getElementById('loginModal');
+    const userButton = document.getElementById('userButton');
+    const closeButton = document.getElementById('closeModal');
+    const closeButton2 = document.getElementById('closeModal2');
+    const regModal = document.getElementById('regModal');
+    const regLink = document.getElementById('regLink');
+    const cancelButton = document.getElementById('cancelButton');
+    const regButton = document.getElementById('regButton');
+    const regForm = document.getElementById('regForm');
+    const loginButton = document.getElementById('loginButton');
+
+    // When the user clicks the user icon, open the modal
+    userButton.addEventListener('click', () => {
+      loginModal.classList.remove('hidden');
+    });
+
+    // When the user clicks the close button, close the modal
+    closeButton.addEventListener('click', () => {
+      loginModal.classList.add('hidden');
+    });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.addEventListener('click', (event) => {
+      if (event.target === loginModal) {
+        loginModal.classList.add('hidden');
+      }
+
+      if (event.target === regModal) {
+        regModal.classList.add('hidden');
+      }
+    });
+
+    // Registration Modal
+    regLink.addEventListener('click', (e) => {
+      e.preventDefault(); // Prevent default anchor behavior
+      loginModal.classList.add('hidden');
+      regModal.classList.remove('hidden');
+    });
+
+    cancelButton.addEventListener('click', () => {
+      regModal.classList.add('hidden');
+      loginModal.classList.remove('hidden');
+    });
+
+    cancelButton.addEventListener('click', confirmCancel);
+
+    regButton.addEventListener('click', () => {
+      // Here you can add functionality to handle registration
+      alert('Registration functionality not implemented yet.');
+
+      regForm.reset();
+      regModal.classList.add('hidden');
+      loginModal.classList.remove('hidden');
+    });
+
+    closeButton2.addEventListener('click', () => {
+      regModal.classList.add('hidden');
+    });
+
+    function confirmCancel() {
+      const confirmed = confirm('Are you sure you want to cancel registration? Your information will not be saved.');
+      if (confirmed) {
+        regModal.classList.add('hidden');
+        // Optional: Clear form fields when canceled
+        const form = regModal.querySelector('form');
+        if (form) form.reset();
+      }
+    }
+
+    // Login Button Functionality
+    loginButton.addEventListener('click', (e) => {
+      e.preventDefault(); // Prevent default form submission
+      // Here you can add functionality to handle login
+      alert('Login functionality not implemented yet.');
+      // Optionally, you can close the modal after login
+      loginModal.classList.add('hidden');
+    });
+
+    // Toggle Password Visibility
+    function togglePassword() {
+      const passwordInput = document.getElementById('passwordInput');
+      const eyeIcon = document.getElementById('eyeIcon');
+
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        // Optional: Change icon to "eye-slash" when password is visible
+        eyeIcon.innerHTML = `
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
+      `;
+      } else {
+        passwordInput.type = 'password';
+        // Revert to original eye icon
+        eyeIcon.innerHTML = `
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+      `;
+      }
+    }
+
+  </script>
+
+
+</body>
+
+</html>
